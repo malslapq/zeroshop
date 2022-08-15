@@ -1,2 +1,4 @@
 rootProject.name = 'zeroshop'
 include 'user-api'
+include 'zerobase-domain'
+
