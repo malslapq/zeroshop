@@ -47,4 +47,13 @@ public class Customer extends BaseEntity {
                 .build();
     }
 
+    public void changeVerifications(String verificationCode) {
+        this.verificationCode = verificationCode;
+        this.verifyExpiredAt = LocalDateTime.now().plusDays(1);
+    }
+
+    public void verificationCompleted() {
+        this.verify = true;
+    }
+
 }

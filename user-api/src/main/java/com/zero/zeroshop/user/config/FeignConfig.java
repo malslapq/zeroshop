@@ -14,7 +14,7 @@ public class FeignConfig {
     @Qualifier(value = "mailgun")
     @Bean
     public BasicAuthRequestInterceptor basicAuthRequestInterceptor() {
-        return new BasicAuthRequestInterceptor("api", "81a9fa1e58f046b608d9f77289a85607-2bab6b06-28cf2a65");
+        return new BasicAuthRequestInterceptor("api", mailgunKey);
     }
 
 }
