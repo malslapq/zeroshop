@@ -30,7 +30,7 @@ public class SignUpCustomerService {
     public void verifyEmail(String email, String code) {
         Customer customer =
                 customerRepository.findByEmail(email).orElseThrow(
-                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER_FROM_EMAIL));
+                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER));
         if (customer.isVerify()) {
             throw new CustomerException(ErrorCode.ALREADY_VERIFY);
         }
@@ -47,7 +47,7 @@ public class SignUpCustomerService {
     public LocalDateTime ChangeCustomerValidateEmail(Long CustomerId, String verificationCode) {
         Customer customer =
                 customerRepository.findById(CustomerId).orElseThrow(
-                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER_FROM_EMAIL));
+                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER));
         customer.changeVerifications(verificationCode);
         return customer.getVerifyExpiredAt();
     }
