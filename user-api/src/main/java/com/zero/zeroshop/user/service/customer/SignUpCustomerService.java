@@ -1,4 +1,4 @@
-package com.zero.zeroshop.user.service;
+package com.zero.zeroshop.user.service.customer;
 
 import com.zero.zeroshop.user.domain.SignUpForm;
 import com.zero.zeroshop.user.domain.model.Customer;
@@ -44,12 +44,11 @@ public class SignUpCustomerService {
     }
 
     @Transactional
-    public LocalDateTime ChangeCustomerValidateEmail(Long CustomerId, String verificationCode) {
+    public void ChangeCustomerValidateEmail(Long customerId, String verificationCode) {
         Customer customer =
-                customerRepository.findById(CustomerId).orElseThrow(
+                customerRepository.findById(customerId).orElseThrow(
                         () -> new CustomerException(ErrorCode.NOT_FOUND_USER));
         customer.changeVerifications(verificationCode);
-        return customer.getVerifyExpiredAt();
     }
 
 }

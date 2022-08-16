@@ -1,9 +1,8 @@
 package com.zero.zeroshop.user.config.filter;
 
+import com.zero.zeroshop.domain.common.UserVo;
 import com.zero.zeroshop.domain.config.JwtAuthenticationProvider;
-import com.zero.zeroshop.domain.domain.common.UserVo;
-import com.zero.zeroshop.user.domain.model.Customer;
-import com.zero.zeroshop.user.service.CustomerService;
+import com.zero.zeroshop.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 
 import javax.servlet.*;
@@ -27,8 +26,7 @@ public class CustomerFilter implements Filter {
             throw new ServletException("Invalid Access");
         }
         UserVo userVo = provider.getUserVo(token);
-        Customer customer =
-                customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail()).orElseThrow(
+        customerService.findByIdAndEmail(userVo.getId(), userVo.getEmail()).orElseThrow(
                 () -> new ServletException("Invalid Access"));
 
         chain.doFilter(request, response);

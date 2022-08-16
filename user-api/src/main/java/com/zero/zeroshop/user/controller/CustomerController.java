@@ -1,12 +1,12 @@
 package com.zero.zeroshop.user.controller;
 
 import com.zero.zeroshop.domain.config.JwtAuthenticationProvider;
-import com.zero.zeroshop.domain.domain.common.UserVo;
+import com.zero.zeroshop.domain.common.UserVo;
 import com.zero.zeroshop.user.domain.customer.CustomerDto;
 import com.zero.zeroshop.user.domain.model.Customer;
 import com.zero.zeroshop.user.exception.CustomerException;
 import com.zero.zeroshop.user.exception.ErrorCode;
-import com.zero.zeroshop.user.service.CustomerService;
+import com.zero.zeroshop.user.service.customer.CustomerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

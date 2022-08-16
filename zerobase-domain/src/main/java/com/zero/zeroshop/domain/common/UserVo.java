@@ -1,4 +1,4 @@
-package com.zero.zeroshop.domain.domain.common;
+package com.zero.zeroshop.domain.common;
 
 
 import lombok.AllArgsConstructor;
