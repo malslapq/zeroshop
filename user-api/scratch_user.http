@@ -1,0 +1,64 @@
+### 회원 가입 ( 구매자 )
+POST http://localhost:8081/signup/customer
+Content-Type: application/json
+
+{
+    "email" : "abc@gmail.com",
+    "name" : "hsh",
+    "password" : "123",
+    "birth" : "1992-09-14",
+    "phone" : "01000000000"
+}
+
+### 이메일 인증 ( 구매자 )
+PUT http://localhost:8081/signup/customer/verify?email=abc@gmail.com&code=8XD5QTTdEU
+
+### 로그인 ( 구매자 )
+POST http://localhost:8081/signin/customer
+Content-Type: application/json
+
+{
+  "email" : "abc@gmail.com",
+  "password" : "123"
+}
+
+### 회원 정보 조회 ( 구매자 )
+GET http://localhost:8081/customer/getInfo
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJTdWJIZUtVUlJyZVFZK1dTT25Ca3RnPT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYwNjQ3ODM5LCJleHAiOjE2NjA3MzQyMzl9.CY3fsEm9RANdZRpNlvI12zSNsoGdttLqIiaN6whWoP8
+
+### 잔액 변경 ( 구매자 )
+POST http://localhost:8081/customer/balance
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJTdWJIZUtVUlJyZVFZK1dTT25Ca3RnPT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYwNjQ3ODM5LCJleHAiOjE2NjA3MzQyMzl9.CY3fsEm9RANdZRpNlvI12zSNsoGdttLqIiaN6whWoP8
+
+{
+  "from" : "admin",
+  "message" : "적립",
+  "money" : 1000
+}
+
+################################################
+
+### 회원가입 ( 판매자 )
+POST http://localhost:8081/signup/seller
+Content-Type: application/json
+
+{
+  "email" : "seller@gmail.com",
+  "name" : "hsh",
+  "password" : "123",
+  "birth" : "1992-09-14",
+  "phone" : "01000000000"
+}
+
+### 이메일 인증 ( 판매자 )
+PUT http://localhost:8081/signup/seller/verify?email=seller@gmail.com&code=itqzf6CPPa
+
+### 로그인 ( 판매자 )
+POST http://localhost:8081/signin/seller
+Content-Type: application/json
+
+{
+  "email" : "seller@gmail.com",
+  "password" : "123"
+}
