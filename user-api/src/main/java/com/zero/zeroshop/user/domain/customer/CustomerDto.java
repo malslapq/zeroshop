@@ -3,7 +3,6 @@ package com.zero.zeroshop.user.domain.customer;
 import com.zero.zeroshop.user.domain.model.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter

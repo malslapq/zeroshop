@@ -1,4 +1,4 @@
-package com.zero.zeroshop.user.service;
+package com.zero.zeroshop.user.service.customer;
 
 import com.zero.zeroshop.user.domain.model.Customer;
 import com.zero.zeroshop.user.domain.repository.CustomerRepository;

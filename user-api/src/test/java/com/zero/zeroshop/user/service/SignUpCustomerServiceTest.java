@@ -2,10 +2,10 @@ package com.zero.zeroshop.user.service;
 
 import com.zero.zeroshop.user.domain.SignUpForm;
 import com.zero.zeroshop.user.domain.model.Customer;
+import com.zero.zeroshop.user.service.customer.SignUpCustomerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 

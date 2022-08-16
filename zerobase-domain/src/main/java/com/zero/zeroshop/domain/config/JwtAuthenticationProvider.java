@@ -1,7 +1,7 @@
 package com.zero.zeroshop.domain.config;
 
-import com.zero.zeroshop.domain.domain.common.UserType;
-import com.zero.zeroshop.domain.domain.common.UserVo;
+import com.zero.zeroshop.domain.common.UserType;
+import com.zero.zeroshop.domain.common.UserVo;
 import com.zero.zeroshop.domain.util.Aes256Util;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
