@@ -3,7 +3,7 @@ package com.zero.zeroshop.user.service.customer;
 import com.zero.zeroshop.user.domain.SignUpForm;
 import com.zero.zeroshop.user.domain.model.Customer;
 import com.zero.zeroshop.user.domain.repository.CustomerRepository;
-import com.zero.zeroshop.user.exception.CustomerException;
+import com.zero.zeroshop.user.exception.CustomException;
 import com.zero.zeroshop.user.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -30,15 +30,15 @@ public class SignUpCustomerService {
     public void verifyEmail(String email, String code) {
         Customer customer =
                 customerRepository.findByEmail(email).orElseThrow(
-                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER));
+                        () -> new CustomException(ErrorCode.NOT_FOUND_USER));
         if (customer.isVerify()) {
-            throw new CustomerException(ErrorCode.ALREADY_VERIFY);
+            throw new CustomException(ErrorCode.ALREADY_VERIFY);
         }
         if (!customer.getVerificationCode().equals(code)) {
-            throw new CustomerException(ErrorCode.WRONG_VERIFICATION);
+            throw new CustomException(ErrorCode.WRONG_VERIFICATION);
         }
         if (customer.getVerifyExpiredAt().isBefore(LocalDateTime.now())) {
-            throw new CustomerException(ErrorCode.EXPIRE_CODE);
+            throw new CustomException(ErrorCode.EXPIRE_CODE);
         }
         customer.verificationCompleted();
     }
@@ -47,7 +47,7 @@ public class SignUpCustomerService {
     public void ChangeCustomerValidateEmail(Long customerId, String verificationCode) {
         Customer customer =
                 customerRepository.findById(customerId).orElseThrow(
-                        () -> new CustomerException(ErrorCode.NOT_FOUND_USER));
+                        () -> new CustomException(ErrorCode.NOT_FOUND_USER));
         customer.changeVerifications(verificationCode);
     }
 

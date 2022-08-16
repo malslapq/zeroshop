@@ -5,9 +5,8 @@ import com.zero.zeroshop.user.client.mailgun.SendMailForm;
 import com.zero.zeroshop.user.domain.SignUpForm;
 import com.zero.zeroshop.user.domain.model.Customer;
 import com.zero.zeroshop.user.domain.model.Seller;
-import com.zero.zeroshop.user.exception.CustomerException;
+import com.zero.zeroshop.user.exception.CustomException;
 import com.zero.zeroshop.user.exception.ErrorCode;
-import com.zero.zeroshop.user.exception.SellerException;
 import com.zero.zeroshop.user.service.customer.SignUpCustomerService;
 import com.zero.zeroshop.user.service.seller.SignUpSellerService;
 import feign.Response;
@@ -35,7 +34,7 @@ public class SignUpApplication {
 
     public String customerSignUp(SignUpForm form) {
         if (signUpCustomerService.isEmailExist(form.getEmail())) {
-            throw new CustomerException(ErrorCode.ALREADY_REGISTER_USER);
+            throw new CustomException(ErrorCode.ALREADY_REGISTER_USER);
         } else {
             Customer customer = signUpCustomerService.signUp(form);
             String code = getRandomCode();
@@ -47,7 +46,7 @@ public class SignUpApplication {
                             "customer"))
                     .build();
             Response response = mailgunClient.sendEmail(sendMailForm);
-            log.info("mailStatus => "+ response.status());
+            log.info("mailStatus => " + response.status());
             signUpCustomerService.ChangeCustomerValidateEmail(customer.getId(), code);
             return "회원가입 성공";
         }
@@ -55,7 +54,7 @@ public class SignUpApplication {
 
     public String sellerSignUp(SignUpForm form) {
         if (signUpSellerService.isEmailExist(form.getEmail())) {
-            throw new SellerException(ErrorCode.ALREADY_REGISTER_USER);
+            throw new CustomException(ErrorCode.ALREADY_REGISTER_USER);
         } else {
             Seller seller = signUpSellerService.signUp(form);
             String code = getRandomCode();
@@ -67,7 +66,7 @@ public class SignUpApplication {
                             "seller"))
                     .build();
             Response response = mailgunClient.sendEmail(sendMailForm);
-            log.info("mailStatus => "+ response.status());
+            log.info("mailStatus => " + response.status());
             signUpSellerService.ChangeSellerValidateEmail(seller.getId(), code);
             return "회원가입 성공";
         }

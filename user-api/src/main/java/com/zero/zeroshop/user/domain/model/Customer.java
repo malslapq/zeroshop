@@ -30,6 +30,8 @@ public class Customer extends BaseEntity {
     private String phone;
     private String password;
     private LocalDate birth;
+    @Column(columnDefinition = "int default 0")
+    private Integer balance;
 
     private LocalDateTime verifyExpiredAt;
     private String verificationCode;
@@ -54,6 +56,10 @@ public class Customer extends BaseEntity {
 
     public void verificationCompleted() {
         this.verify = true;
+    }
+
+    public void changeBalance(Integer money) {
+        this.balance = money;
     }
 
 }
