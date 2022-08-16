@@ -18,4 +18,8 @@ public class SellerService {
                 .filter(seller -> seller.getPassword().equals(password) && seller.isVerify())
                 .findFirst();
     }
+
+    public Optional<Seller> findByIdAndEmail(Long id, String email) {
+        return sellerRepository.findByIdAndEmail(id, email);
+    }
 }
