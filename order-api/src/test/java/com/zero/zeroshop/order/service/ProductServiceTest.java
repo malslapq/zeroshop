@@ -13,6 +13,7 @@ import com.zero.zeroshop.order.domain.product.UpdateProductItemForm;
 import com.zero.zeroshop.order.domain.repository.ProductRepository;
 import java.util.ArrayList;
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,11 @@ class ProductServiceTest {
     private ProductItemService productItemService;
     @Autowired
     private ProductRepository productRepository;
+
+    @BeforeEach
+    void beforeEach() {
+        productRepository.deleteAll();
+    }
 
     @DisplayName("product add test")
     @Test
@@ -67,20 +73,21 @@ class ProductServiceTest {
         int itemCount = 1;
         int price = 10000;
         AddProductForm form = makeProductForm(name, description, itemCount, price);
-        productService.addProduct(sellerId, form);
-
+        Product product = productService.addProduct(sellerId, form);
+        Long productId = product.getId();
+        Long itemId = product.getProductItems().get(0).getId();
         int changePrice = 100000;
         int changeItemCount = 2;
         String changeName = "나이키 조던";
         String changeDescription = "한정판 신발";
         UpdateProductItemForm itemsForm = UpdateProductItemForm.builder()
-            .id(1L)
+            .id(itemId)
             .name(changeName)
             .price(changePrice)
             .count(changeItemCount)
             .build();
         UpdateProductForm productForm = UpdateProductForm.builder()
-            .id(1L)
+            .id(productId)
             .name(changeName)
             .description(changeDescription)
             .items(List.of(itemsForm))
@@ -108,14 +115,15 @@ class ProductServiceTest {
         int itemCount = 5;
         int price = 10000;
         AddProductForm form = makeProductForm(name, description, itemCount, price);
-        int oldSize = productService.addProduct(sellerId, form).getProductItems().size();
+        Product product = productService.addProduct(sellerId, form);
+        int oldSize = product.getProductItems().size();
 
         // when
-        productItemService.deleteProductItem(sellerId, 1L);
-        Product product = productRepository.findBySellerIdAndId(sellerId, 1L).get();
+        productItemService.deleteProductItem(sellerId, product.getProductItems().get(0).getId());
+        Product result = productRepository.findBySellerIdAndId(sellerId, 1L).get();
 
         // then
-        assertEquals(oldSize-1, product.getProductItems().size());
+        assertEquals(oldSize-1, result.getProductItems().size());
     }
 
     @DisplayName("Product Delete Test")
@@ -128,10 +136,10 @@ class ProductServiceTest {
         int itemCount = 5;
         int price = 10000;
         AddProductForm form = makeProductForm(name, description, itemCount, price);
-        productService.addProduct(sellerId, form);
+        Product product = productService.addProduct(sellerId, form);
 
         // when
-        productService.deleteProduct(sellerId, 1L);
+        productService.deleteProduct(sellerId, product.getId());
         Product result = productRepository.findById(1L).orElse(null);
 
         // then

@@ -4,6 +4,7 @@ Content-Type: application/json
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
 
 {
+  "name": "다쿠아즈",
   "description": "상품 설명",
   "items": [
     {
@@ -11,8 +12,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
       "name": "딸기맛 다쿠아즈",
       "price": 3500
     }
-  ],
-  "name": "다쿠아즈"
+  ]
 }
 
 ### 상품 아이템 추가
@@ -22,9 +22,9 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
 
 {
   "productId": 1,
-  "count": 1,
   "name": "초코맛 다쿠아즈",
-  "price": 3500
+  "price": 3500,
+  "count": 1
 }
 
 ### 상품 수정
@@ -34,16 +34,16 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
 
 {
   "id" : 1,
+  "name": "다쿠아즈",
   "description": "상품 설명",
   "items": [
     {
       "id" : 1,
-      "count": 5,
       "name": "초코맛 다쿠아즈",
-      "price": 3000
+      "price": 3000,
+      "count": 5
     }
-  ],
-  "name": "다쿠아즈"
+  ]
 }
 
 ### 상품 아이템 수정
@@ -53,9 +53,9 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
 
 {
   "id" : 1,
-  "count": 15,
   "name": "초코맛 다쿠아즈",
-  "price": 4000
+  "price": 4000,
+  "count": 15
 }
 
 ### 상품 삭제
@@ -66,4 +66,11 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
 ### 상품 아이템 삭제
 DELETE http://localhost:8082/seller/product/item?id=2
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
+
+### 상품 검색 조회
+GET http://localhost:8082/search/product?name=다쿠아즈
+
+
+### 상품 상세 조회
+GET http://localhost:8082/search/product/detail?productId=1
 
