@@ -2,7 +2,10 @@ package com.zero.zeroshop.order.service;
 
 import com.zero.zeroshop.order.domain.model.Product;
 import com.zero.zeroshop.order.domain.product.AddProductForm;
+import com.zero.zeroshop.order.domain.product.UpdateProductForm;
 import com.zero.zeroshop.order.domain.repository.ProductRepository;
+import com.zero.zeroshop.order.exception.CustomException;
+import com.zero.zeroshop.order.exception.ErrorCode;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,6 +19,15 @@ public class ProductService {
     @Transactional
     public Product addProduct(Long sellerId, AddProductForm form) {
         return productRepository.save(Product.of(sellerId, form));
+    }
+
+    @Transactional
+    public Product updateProduct(Long sellerId, UpdateProductForm form) {
+        Product product = productRepository.findBySellerIdAndId(sellerId, form.getId())
+            .orElseThrow(() -> new CustomException(
+                ErrorCode.NOT_FOUND_PRODUCT));
+        product.update(form);
+        return product;
     }
 
 }

@@ -1,5 +1,6 @@
-package com.zero.zeroshop.order.domain.model;
+package com.zero.zeroshop.order.domain.product;
 
+import com.zero.zeroshop.order.domain.model.ProductItem;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

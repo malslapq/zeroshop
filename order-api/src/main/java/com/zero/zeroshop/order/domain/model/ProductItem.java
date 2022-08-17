@@ -1,5 +1,7 @@
 package com.zero.zeroshop.order.domain.model;
 
+import com.zero.zeroshop.order.domain.product.AddProductItemForm;
+import com.zero.zeroshop.order.domain.product.UpdateProductItemForm;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -38,6 +40,12 @@ public class ProductItem extends BaseEntity{
             .price(form.getPrice())
             .count(form.getCount())
             .build();
+    }
+
+    public void update(UpdateProductItemForm form) {
+        this.name = form.getName();
+        this.price = form.getPrice();
+        this.count = form.getCount();
     }
 
 }

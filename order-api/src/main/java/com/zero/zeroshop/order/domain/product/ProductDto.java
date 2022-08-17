@@ -1,5 +1,6 @@
-package com.zero.zeroshop.order.domain.model;
+package com.zero.zeroshop.order.domain.product;
 
+import com.zero.zeroshop.order.domain.model.Product;
 import java.util.List;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
