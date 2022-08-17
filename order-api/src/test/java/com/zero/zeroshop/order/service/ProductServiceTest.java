@@ -1,6 +1,7 @@
 package com.zero.zeroshop.order.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import com.zero.zeroshop.order.domain.model.Product;
 import com.zero.zeroshop.order.domain.model.ProductItem;
@@ -22,6 +23,8 @@ class ProductServiceTest {
 
     @Autowired
     private ProductService productService;
+    @Autowired
+    private ProductItemService productItemService;
     @Autowired
     private ProductRepository productRepository;
 
@@ -93,6 +96,46 @@ class ProductServiceTest {
         assertEquals(result.getProductItems().get(0).getPrice(), changePrice);
         assertEquals(result.getProductItems().get(0).getCount(), changeItemCount);
 
+    }
+
+    @DisplayName("ProductItem Delete Test")
+    @Test
+    void PRODUCT_ITEM_DELETE_TEST(){
+        // given
+        Long sellerId = 1L;
+        String name = "나이키 에어포스";
+        String description = "신발";
+        int itemCount = 5;
+        int price = 10000;
+        AddProductForm form = makeProductForm(name, description, itemCount, price);
+        int oldSize = productService.addProduct(sellerId, form).getProductItems().size();
+
+        // when
+        productItemService.deleteProductItem(sellerId, 1L);
+        Product product = productRepository.findBySellerIdAndId(sellerId, 1L).get();
+
+        // then
+        assertEquals(oldSize-1, product.getProductItems().size());
+    }
+
+    @DisplayName("Product Delete Test")
+    @Test
+    void PRODUCT_DELETE_TEST(){
+        // given
+        Long sellerId = 1L;
+        String name = "나이키 에어포스";
+        String description = "신발";
+        int itemCount = 5;
+        int price = 10000;
+        AddProductForm form = makeProductForm(name, description, itemCount, price);
+        productService.addProduct(sellerId, form);
+
+        // when
+        productService.deleteProduct(sellerId, 1L);
+        Product result = productRepository.findById(1L).orElse(null);
+
+        // then
+        assertNull(result);
     }
 
     private static AddProductForm makeProductForm(String name, String description, int itemCount,
