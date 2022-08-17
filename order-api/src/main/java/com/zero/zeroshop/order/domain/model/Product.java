@@ -1,6 +1,10 @@
 package com.zero.zeroshop.order.domain.model;
 
 import com.zero.zeroshop.order.domain.product.AddProductForm;
+import com.zero.zeroshop.order.domain.product.UpdateProductForm;
+import com.zero.zeroshop.order.domain.product.UpdateProductItemForm;
+import com.zero.zeroshop.order.exception.CustomException;
+import com.zero.zeroshop.order.exception.ErrorCode;
 import java.util.stream.Collectors;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -41,6 +45,17 @@ public class Product extends BaseEntity {
                 .map(piForm -> ProductItem.of(sellerId, piForm)).collect(Collectors.toList()))
             .build();
 
+    }
+
+    public void update(UpdateProductForm form) {
+        for (UpdateProductItemForm itemForm : form.getItems()) {
+            ProductItem item = this.getProductItems().stream()
+                .filter(pi -> pi.getId().equals(itemForm.getId()))
+                .findFirst().orElseThrow(() -> new CustomException(ErrorCode.NOT_FOUND_ITEM));
+            item.update(itemForm);
+        }
+        this.name = form.getName();
+        this.description = form.getDescription();
     }
 
 }

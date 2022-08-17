@@ -1,8 +1,9 @@
 package com.zero.zeroshop.order.service;
 
-import com.zero.zeroshop.order.domain.model.AddProductItemForm;
+import com.zero.zeroshop.order.domain.product.AddProductItemForm;
 import com.zero.zeroshop.order.domain.model.Product;
 import com.zero.zeroshop.order.domain.model.ProductItem;
+import com.zero.zeroshop.order.domain.product.UpdateProductItemForm;
 import com.zero.zeroshop.order.domain.repository.ProductItemRepository;
 import com.zero.zeroshop.order.domain.repository.ProductRepository;
 import com.zero.zeroshop.order.exception.CustomException;
@@ -32,5 +33,13 @@ public class ProductItemService {
         return product;
     }
 
+    @Transactional
+    public ProductItem updateProductItem(Long sellerId, UpdateProductItemForm form) {
+        ProductItem productItem = productItemRepository.findById(form.getId())
+            .filter(pi -> pi.getSellerId().equals(sellerId))
+            .orElseThrow(() -> new CustomException(NOT_FOUND_ITEM));
+        productItem.update(form);
+        return productItem;
+    }
 
 }

@@ -26,3 +26,35 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
   "name": "초코맛 다쿠아즈",
   "price": 3500
 }
+
+### 상품 수정
+PUT http://localhost:8082/seller/product
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
+
+{
+  "id" : 1,
+  "description": "상품 설명",
+  "items": [
+    {
+      "id" : 1,
+      "count": 5,
+      "name": "초코맛 다쿠아즈",
+      "price": 3000
+    }
+  ],
+  "name": "다쿠아즈"
+}
+
+### 상품 아이템 수정
+PUT http://localhost:8082/seller/product/item
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
+
+{
+  "id" : 1,
+  "count": 15,
+  "name": "초코맛 다쿠아즈",
+  "price": 4000
+}
+
