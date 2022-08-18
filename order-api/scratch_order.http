@@ -1,7 +1,7 @@
 ### 상품 추가
 POST http://localhost:8082/seller/product
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwODMxNjUwLCJleHAiOjE2NjA5MTgwNTB9.R6bDD611CiXcPvuQapeP6LFiN7rUbKpz7FV5BnRIrzc
 
 {
   "name": "다쿠아즈",
@@ -15,10 +15,11 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
   ]
 }
 
+
 ### 상품 아이템 추가
 POST http://localhost:8082/seller/product/item
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwODMxNjUwLCJleHAiOjE2NjA5MTgwNTB9.R6bDD611CiXcPvuQapeP6LFiN7rUbKpz7FV5BnRIrzc
 
 {
   "productId": 1,
@@ -26,6 +27,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
   "price": 3500,
   "count": 1
 }
+
 
 ### 상품 수정
 PUT http://localhost:8082/seller/product
@@ -45,6 +47,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
     }
   ]
 }
+
 
 ### 상품 아이템 수정
 PUT http://localhost:8082/seller/product/item
@@ -67,6 +70,7 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9Re
 DELETE http://localhost:8082/seller/product/item?id=2
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJaSm5xd1g4RkYyMUdCTmZuckZMWHFKTm9ReGh1emFSbWFlVEZ3VTVYN3hNPSIsImp0aSI6IkNtWUR2NU1LNVlVeWlrOEtHTkR3b3c9PSIsInJvbGVzIjoiU0VMTEVSIiwiaWF0IjoxNjYwNzE3NDkzLCJleHAiOjE2NjA4MDM4OTN9.8mJcyx0Yr8gnKrz1AGkUzZdm0wLF0gwIEzGftEUj9pk
 
+
 ### 상품 검색 조회
 GET http://localhost:8082/search/product?name=다쿠아즈
 
@@ -74,3 +78,23 @@ GET http://localhost:8082/search/product?name=다쿠아즈
 ### 상품 상세 조회
 GET http://localhost:8082/search/product/detail?productId=1
 
+
+### 장바구니 상품 추가
+POST http://localhost:8082/customer/cart
+Content-Type: application/json
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJDbVlEdjVNSzVZVXlpazhLR05Ed293PT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYwODMyMzYyLCJleHAiOjE2NjA5MTg3NjJ9.WWIawb4uC9MDanli6I6dLPekY1kEE6BwrjsZvivw41s
+
+{
+  "id" : 1,
+  "sellerId" : 1,
+  "name": "다쿠아즈",
+  "description": "상품 설명",
+  "items": [
+    {
+      "id" : 1,
+      "count": 1,
+      "name": "딸기맛 다쿠아즈",
+      "price": 3500
+    }
+  ]
+}
