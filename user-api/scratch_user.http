@@ -11,7 +11,7 @@ Content-Type: application/json
 }
 
 ### 이메일 인증 ( 구매자 )
-PUT http://localhost:8081/signup/customer/verify?email=abc@gmail.com&code=8XD5QTTdEU
+PUT http://localhost:8081/signup/customer/verify?email=abc@gmail.com&code=1Hs1uRWDMB
 
 ### 로그인 ( 구매자 )
 POST http://localhost:8081/signin/customer
@@ -37,7 +37,6 @@ X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iL
   "money" : 1000
 }
 
-################################################
 
 ### 회원가입 ( 판매자 )
 POST http://localhost:8081/signup/seller
