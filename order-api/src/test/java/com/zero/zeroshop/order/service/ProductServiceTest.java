@@ -107,7 +107,7 @@ class ProductServiceTest {
 
     @DisplayName("ProductItem Delete Test")
     @Test
-    void PRODUCT_ITEM_DELETE_TEST(){
+    void PRODUCT_ITEM_DELETE_TEST() {
         // given
         Long sellerId = 1L;
         String name = "나이키 에어포스";
@@ -123,12 +123,12 @@ class ProductServiceTest {
         Product result = productRepository.findBySellerIdAndId(sellerId, 1L).get();
 
         // then
-        assertEquals(oldSize-1, result.getProductItems().size());
+        assertEquals(oldSize - 1, result.getProductItems().size());
     }
 
     @DisplayName("Product Delete Test")
     @Test
-    void PRODUCT_DELETE_TEST(){
+    void PRODUCT_DELETE_TEST() {
         // given
         Long sellerId = 1L;
         String name = "나이키 에어포스";
