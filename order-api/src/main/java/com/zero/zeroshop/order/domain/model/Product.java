@@ -58,4 +58,8 @@ public class Product extends BaseEntity {
         this.description = form.getDescription();
     }
 
+    public void resetItems() {
+        this.productItems = new ArrayList<>();
+    }
+
 }

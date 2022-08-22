@@ -48,4 +48,12 @@ public class ProductItem extends BaseEntity{
         this.count = form.getCount();
     }
 
+    public void changeCount(int count) {
+        this.count = count;
+    }
+
+    public void changePrice(int price){
+        this.price = price;
+    }
+
 }
