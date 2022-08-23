@@ -54,7 +54,7 @@ class CartApplicationTest {
         assertEquals(result.getProducts().get(0).getItems().get(0).getCount(), 3);
     }
 
-    @DisplayName("장바구니 변경 테스트")
+    @DisplayName("장바구니 확인시 변경 대응 테스트")
     @Test
     void CART_MODIFY_TEST() {
         // given
@@ -88,6 +88,24 @@ class CartApplicationTest {
         assertEquals(result3.getProducts().get(0).getItems().get(0).getPrice(), 1000);
         assertEquals(result4.getProducts().size(), 0);
 
+    }
+
+    @DisplayName("장바구니 업데이트 테스트")
+    @Test
+    void UPDATE_CART_TEST() {
+        // given
+        Product product = addProduct();
+        Long customerId = 1L;
+        cartApplication.clearCart(customerId);
+        AddProductCartForm addProductCartForm = makeAddCartForm(product);
+        Cart cart = cartApplication.addCart(customerId, addProductCartForm);
+        cart.getProducts().get(0).getItems().get(0).setCount(2);
+
+        // when
+        Cart updateCart = cartApplication.updateCart(customerId, cart);
+
+        // then
+        assertEquals(updateCart.getProducts().get(0).getItems().get(0).getCount(), 2);
     }
 
 
