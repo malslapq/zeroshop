@@ -23,18 +23,18 @@ Content-Type: application/json
 }
 
 ### 회원 정보 조회 ( 구매자 )
-GET http://localhost:8081/customer/getInfo
+GET http://localhost:8081/customer/getinfo
 X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJTdWJIZUtVUlJyZVFZK1dTT25Ca3RnPT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYwNjQ3ODM5LCJleHAiOjE2NjA3MzQyMzl9.CY3fsEm9RANdZRpNlvI12zSNsoGdttLqIiaN6whWoP8
 
 ### 잔액 변경 ( 구매자 )
 POST http://localhost:8081/customer/balance
 Content-Type: application/json
-X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJTdWJIZUtVUlJyZVFZK1dTT25Ca3RnPT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYwNjQ3ODM5LCJleHAiOjE2NjA3MzQyMzl9.CY3fsEm9RANdZRpNlvI12zSNsoGdttLqIiaN6whWoP8
+X-AUTH-TOKEN: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ5aG5haWpCZFptQnBtMDQ4T1JNZzh3PT0iLCJqdGkiOiJDbVlEdjVNSzVZVXlpazhLR05Ed293PT0iLCJyb2xlcyI6IkNVU1RPTUVSIiwiaWF0IjoxNjYxMjM1OTU0LCJleHAiOjE2NjEzMjIzNTR9.mizlDGWQdM45Ryf2-HNyHlPLnI5-XyYfXRHsas56kGI
 
 {
   "from" : "admin",
   "message" : "적립",
-  "money" : 1000
+  "money" : 100000
 }
 
 
