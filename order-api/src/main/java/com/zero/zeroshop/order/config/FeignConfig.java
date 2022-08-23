@@ -1,4 +1,4 @@
-package com.zero.zeroshop.user.config;
+package com.zero.zeroshop.order.config;
 
 import feign.auth.BasicAuthRequestInterceptor;
 import org.springframework.beans.factory.annotation.Qualifier;
